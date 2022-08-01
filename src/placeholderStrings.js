@@ -1,2 +1,2 @@
 export const writeUrlTextHere = 'https://example.com';
-export const writeTextHereString = 'Example URL';
+export const writeTextHereString = 'URL Title';

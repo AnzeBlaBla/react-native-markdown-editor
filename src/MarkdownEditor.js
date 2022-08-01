@@ -61,18 +61,17 @@ const markdownStyles = {
   },
 };
 
-// Focus on mount (mby prop for it?)
-
 const WrapperView = Platform.OS === 'ios' ? KeyboardAvoidingView : View;
 
 export default function MarkdownEditor({
   defaultText,
   defaultShowPreview = false,
-  onMarkdownChange, // TODO: notify of changes
+  onMarkdownChange,
   defaultPreviewText = 'Markdown preview here',
   placeholder = 'Write a long message',
   formats,
   markdownButton,
+  focusOnMount = true,
 }) {
 
   const [text, setTextState] = React.useState(defaultText || '');
@@ -82,7 +81,7 @@ export default function MarkdownEditor({
   const textInput = useRef(null);
 
   useEffect(() => {
-    if (textInput.current) {
+    if (textInput.current && focusOnMount) {
       textInput.current.focus();
     }
   }, [textInput]);
@@ -92,22 +91,23 @@ export default function MarkdownEditor({
   }
 
   const onChangeText = (text) => {
-    setTextState(text);
+    setText(text);
   }
   const onSelectionChange = (selection) => {
     setSelectionState(selection.nativeEvent.selection);
   }
 
   const setSelection = (start, end) => {
-    console.log('setSelection', start, end);
     if (!end)
       end = start;
     setSelectionState({ start, end });
     setDisplaySelection(true);
   }
   const setText = (text) => {
-    console.log('setText', text);
     setTextState(text);
+    if (onMarkdownChange) {
+      onMarkdownChange(text);
+    }
   }
 
   // Auto toggle selection back (this will let the user change it again, otherwise it's buggy)
