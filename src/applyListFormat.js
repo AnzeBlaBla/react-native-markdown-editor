@@ -1,6 +1,6 @@
 import { replaceBetween } from './utils';
 
-export default ({ getState, item, setState }) => {
+export default ({ getState, item, setText, setSelection }) => {
   let { text } = getState();
   const { selection } = getState();
   text = text || '';
@@ -24,7 +24,6 @@ export default ({ getState, item, setState }) => {
     newSelection = { start: selection.start + 3, end: selection.start + 3 };
   }
 
-  setState({ text: newText }, () => {
-      setState({ selection: newSelection });
-  });
+  setText(newText);
+  setSelection(newSelection.start, newSelection.end);
 };

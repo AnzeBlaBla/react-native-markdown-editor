@@ -1,7 +1,7 @@
 import { isStringWebLink, replaceBetween } from './utils';
 import { writeTextHereString, writeUrlTextHere } from './placeholderStrings';
 
-export default ({ getState, item, setState }) => {
+export default ({ getState, item, setText, setSelection }) => {
   const { selection, text } = getState();
   let newText;
   let newSelection;
@@ -27,7 +27,6 @@ export default ({ getState, item, setState }) => {
       end: selection.start + 1 + writeTextHereString.length,
     };
   }
-  setState({ text: newText }, () => {
-      setState({ selection: newSelection });
-  });
+  setText(newText);
+  setSelection(newSelection.start, newSelection.end);
 };

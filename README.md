@@ -1,22 +1,23 @@
 # react-native-markdown-editor
 
-[![npm version](https://badge.fury.io/js/react-native-markdown-editor.svg)](https://badge.fury.io/js/react-native-markdown-editor)
-[![Build Status](https://travis-ci.org/kunall17/react-native-markdown-editor.svg?branch=master)](https://travis-ci.org/kunall17/react-native-markdown-editor)
-
-This is a library for rendering a markdown editor for the markdown with helper buttons to easily write markdown. With live preview markdown as well (thanks to https://github.com/Benjamin-Dobell/react-native-markdown-view)
+This is a rewrite of [react-native-markdown-editor](https://www.npmjs.com/package/react-native-markdown-editor), a library for rendering a markdown editor for the markdown with helper buttons to easily write markdown.
+It uses [react-native-markdown-view](https://github.com/Benjamin-Dobell/react-native-markdown-view) to preview the markdown.
 
 ## Index
 
-* [Getting started](#getting-started)
-* [Screenshots](#screenshots)
-* [Features](#features)
-* [Usage](#usage)
-* [Customizing](#Customizing)
-    * [Your own custom formats](#your-own-custom-formats)
-    * [Customize the helper button](#customize-the-helper-button)
-    * [Customize the markdownButton styles](#customize-the-markdownbutton-styles)
-* [Props for the Markdown Editor](#props)
-* [Contributing](#contributing)
+- [react-native-markdown-editor](#react-native-markdown-editor)
+  - [Index](#index)
+  - [Getting Started](#getting-started)
+  - [Features](#features)
+- [This is an < h1 > tag](#this-is-an--h1--tag)
+  - [Usage](#usage)
+  - [Customizing](#customizing)
+        - [Your own custom formats](#your-own-custom-formats)
+      - [Customize the helper button](#customize-the-helper-button)
+      - [Customize the renderButton styles](#customize-the-renderbutton-styles)
+  - [Props](#props)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Getting Started
 
@@ -30,17 +31,11 @@ or with npm:
 
 Then see [Usage](#usage) for futher details
 
-## Screenshots
-
-Screenshot:
-
-<img src="https://raw.githubusercontent.com/kunall17/react-native-markdown-editor/static/Screenshot.png" width="40%" />
-
 ## Features
 
 * Multiline textinput for writing markdown
 * Live preview of the markdown written (can be hidden)
-* Helper buttons to write the syntax for the markdown (like github)  
+* Helper buttons to write the syntax for the markdown  
 
 
 <details>
@@ -96,7 +91,7 @@ It can be used with a toolbar and have a submit menu option there!
 
 
 ##### Your own custom formats
-You can give a custom list of buttons you want to give the default is [Formats](https://github.com/kunall17/react-native-markdown-editor/blob/master/lib/src/Formats.js) by speicifying
+You can give a custom list of buttons you want to give the default is [Formats](src/Formats.js) by speicifying
 
 ```
    <MarkdownEditor Formats={YOUR_CUSTOM_Formats} />
@@ -105,7 +100,7 @@ You can give a custom list of buttons you want to give the default is [Formats](
 #### Customize the helper button
 
 You can customize the helper button using the `markdownButton` prop.
-The buttons are rendered using a `FlatList` and the data passed is the [Formats](https://github.com/kunall17/react-native-markdown-editor/blob/master/lib/src/Formats.js)
+The buttons are rendered using a `FlatList` and the data passed is the [Formats](src/Formats.js)
 
 markdownButton can be method like
 
@@ -121,7 +116,7 @@ const defaultMarkdownButton = ({ item, getState, setState }) =>
 
 Where item is an each object in the Formats list
 
-You can also import the methods used in [Formats](https://github.com/kunall17/react-native-markdown-editor/blob/master/lib/src/Formats.js) by using
+You can also import the methods used in [Formats](src/Formats.js) by using
 
 ```
 import { applyWrapFormatNewLines, applyWrapFormat, applyWebLinkFormat, applyListFormat } from 'react-native-markdown-editor';
@@ -140,15 +135,14 @@ You can add a style key in the Formats.js and this will be used while rendering 
 
 |       Name       |   Type   |                                                          Default                                                          |                   Description                    |
 |:---------------- |:-------- |:------------------------------------------------------------------------------------------------------------------------- |:------------------------------------------------ |
-| Formats          | Array    | [Formats](https://github.com/kunall17/react-native-markdown-editor/blob/master/lib/src/Formats.js)                        | Elements for the markdown buttons                |
-| markdownButton   | function | [defaultMarkdownButton](https://github.com/kunall17/react-native-markdown-editor/blob/master/lib/src/renderButtons.js#L9) | A custom function to render the markdown buttons |
+| Formats          | Array    | [Formats](src/Formats.js)                        | Elements for the markdown buttons                |
+| markdownButton   | function | [defaultMarkdownButton](src/renderButtons.js#L9) | A custom function to render the markdown buttons |
 | onMarkdownChange | function |                                                                                                                           | Callback function, calls when markdown is typed  |
 | showPreview      | boolean  | false                                                                                                                     | To show the markdown preview by Default          |
 
 ## Contributing
 
-PR's/Issues/Bugs or suggestions are welcomed. Please post them at https://github.com/kunall17/react-native-markdown-editor/issues.
-
+PR's/Issues/Bugs or suggestions are welcomed.
 
 ## License
 
