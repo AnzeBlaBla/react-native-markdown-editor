@@ -120,7 +120,7 @@ export default function MarkdownEditor({
     <WrapperView behavior="padding" style={styles.screen}>
       {showPreview ? (
         <View style={styles.preview}>
-          <ScrollView removeClippedSubviews>
+          <ScrollView removeClippedSubviews nestedScrollEnabled={true}>
             <MarkdownView styles={markdownStyles}>
               {text === '' ? defaultPreviewText : text}
             </MarkdownView>
