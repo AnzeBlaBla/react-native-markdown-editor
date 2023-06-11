@@ -1,14 +1,14 @@
 import React from 'react';
 import { FlatList, TouchableOpacity, Text } from 'react-native';
 
-import Formats from './Formats';
+import defaultFormats from './defaultFormats';
 
 const FOREGROUND_COLOR = 'rgba(82, 194, 175, 1)';
 const defaultStyles = { padding: 8, color: FOREGROUND_COLOR, fontSize: 16 };
 
-const defaultMarkdownButton = ({ item, getState, setState }) => {
+const defaultMarkdownButton = ({ item, ...drill }) => {
   return (
-    <TouchableOpacity onPress={() => item.onPress({ getState, setState, item })}>
+    <TouchableOpacity onPress={() => item.onPress({ item, ...drill })}>
       <Text style={[defaultStyles, item.style]}>
         {item.title}
       </Text>
@@ -16,15 +16,15 @@ const defaultMarkdownButton = ({ item, getState, setState }) => {
   );
 };
 
-export const renderFormatButtons = ({ getState, setState }, formats, markdownButton) => {
+export const renderFormatButtons = (drill, formats, markdownButton) => {
   const list = (
     <FlatList
-      data={formats ? formats : Formats}
+      data={formats ? formats : defaultFormats}
       keyboardShouldPersistTaps="always"
       renderItem={({ item, index }) =>
         markdownButton
-          ? markdownButton({ item, getState, setState })
-          : defaultMarkdownButton({ item, getState, setState })}
+          ? markdownButton({ item, ...drill })
+          : defaultMarkdownButton({ item, ...drill })}
       horizontal
     />
   );

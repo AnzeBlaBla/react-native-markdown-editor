@@ -1,29 +1,14 @@
 {
-  "name": "@anzeblabla/react-native-markdown-editor",
-  "version": "1.1.0",
-  "main": "lib/main.js",
-  "scripts": {
-    "test": "npm run test:prettier && jest",
-    "prettier-all": "prettier --write --single-quote --jsx-bracket-same-line --trailing-comma all --print-width 100  `find lib -name \"*.js\"`",
-    "prettier": "prettier --write --single-quote --jsx-bracket-same-line --trailing-comma all --print-width 100",
-    "test:prettier": "prettier-check  --single-quote --jsx-bracket-same-line --trailing-comma all --print-width 100 `find lib -name \"*.js\"`"
+    "name": "@anzeblabla/react-native-markdown-editor",
+    "version": "2.0.2",
+    "main": "./main.js",
+    "scripts": {},
+    "dependencies": {
+        "react-native-markdown-view": "^1.0.0"
     },
-  "dependencies": {
-    "react-native-markdown-view": "^1.0.0"
-  },
-  "peerDependencies": {
-    "react": "18.1.0",
-    "react-native": "0.70.8"
-  },
-  "devDependencies": {
-    "babel-jest": "20.0.3",
-    "babel-preset-react-native": "2.1.0",
-    "deep-freeze": "^0.0.1",
-    "jest": "20.0.4",
-    "prettier": "^1.5.3",
-    "prettier-check": "^1.0.0"
-  },
-  "jest": {
-    "preset": "react-native"
-  }
+    "peerDependencies": {
+        "react": "^18.1.0",
+        "react-native": "~0.70.8"
+    },
+    "devDependencies": {}
 }
